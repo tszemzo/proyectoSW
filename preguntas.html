@@ -14,7 +14,8 @@
 		   href='estilos/smartphone.css' />
   </head>
   <body>
-  <div id='page-wrap' height = "1000px">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <div id='page-wrap' >
 	<header class='main' id='h1'>
 		<span class="right"><a href="registro">Registrarse</a></span>
       		<span class="right"><a href="login">Login</a></span>
@@ -28,7 +29,7 @@
 	</nav>
     <section class="main" id="s1">
     
-	<div>
+	<div height="500px">
 	<p> Dirección de correo del autor de la pregunta (*)</p>
 	<input id="dirCorreo" type="text" name="nombreDirCorreo" placeholder="Por ejemplo: correo"  />
 	<p> Enunciado de la pregunta (*)</p>
@@ -46,11 +47,41 @@
 	<input id="complejidad" type="text" name="nombreComplejidad" placeholder="Por ejemplo: 5" />
 	<p>Tema de la pregunta (*)</p>
 	<input id="tema" type="text" name="nombreTema" placeholder="Por ejemplo: Informatica" />
+	<button id="botonEnviar">Enviar pregunta</button>
 	</div>
     </section>
 	<footer class='main' id='f1'>
 		<a href='https://github.com'>Link GITHUB</a>
 	</footer>
 </div>
+<script>
+	$("#botonEnviar").click(function(){
+	  validarCamposNulos();
+	  validarCorreo();
+	  })
+	function validarCamposNulos(){
+		var correo = $("#dirCorreo").val();
+		var pregunta = $("#pregunta").val();
+		var respuestaCorrecta = $("#respCorrecta").val();
+		var respuestaIncorrecta1 = $("#respIncorrecta1").val();
+		var respuestaIncorrecta2 = $("#respIncorrecta2").val();
+		var respuestaIncorrecta3 = $("#respIncorrecta3").val();
+		var complejidad = $("#complejidad").val();
+		var tema = $("#tema").val();
+		if(correo.length === 0 || pregunta.length === 0 || respuestaCorrecta.length === 0
+			|| respuestaIncorrecta1.length === 0 || respuestaIncorrecta2.length === 0 ||
+			respuestaIncorrecta3.length === 0 || complejidad.length === 0 || tema.length === 0){
+			alert("Algun campo vacio");
+			}
+	}
+	function validarCorreo(){
+		var correo = $("#dirCorreo").val();
+		var correoRegex = /^([a-zA-Z_.+-])+[0-9]{3}\@ikasle.ehu.eus+$/;
+		if(!correoRegex.test(correo)){
+			alert("mal");
+		}
+		
+	  }
+</script>
 </body>
 </html>
