@@ -31,7 +31,7 @@
 
     <section class="main" id="s1">
     <div>
-        <form id='fpreguntas' name='fpreguntas' action=’prueba.php’>
+        <form id='fpreguntas' name='fpreguntas' action=prueba.php>
         	<p> Dirección de correo del autor de la pregunta <strong>(*)</strong></p>
         	<input id="dirCorreo" type="text" name="nombreDirCorreo" autocomplete="off" placeholder="Ej: tom001@ikasle.ehu.eus"/>
 
@@ -69,19 +69,22 @@
 	$("#botonEnviar").click(function(){
     	//valida campos vacios;
         var form = $('#fpreguntas');
-        if(validarNulos(form)) alert("Algun campo obligatorio vacio");
+        if(validarNulos(form)) {
+            alert("Algun campo obligatorio vacio");
+            form.attr('action', '');
+        }
     	//validar correo electronico;
         var correoRegex = /^([a-zA-Z_.+-])+[0-9]{3}\@ikasle.ehu.eus+$/;
         var correo = $("#dirCorreo").val();
-        validarRegex(correo,correoRegex,"Correo en formato erroneo");
+        if (!validarRegex(correo,correoRegex,"Correo en formato erroneo")) form.attr('action', '');
         //valida complejidad;
         var complejidad = $("#complejidad").val();
         var complejidadRegex = /^[0-5]$/;
-        validarRegex(complejidad,complejidadRegex,"La complejidad debe estar entre 0 y 5!");
+        if (!validarRegex(complejidad,complejidadRegex,"La complejidad debe estar entre 0 y 5!")) form.attr('action', '');
         // valida pregunta
         var pregunta = $("#pregunta").val();
         var preguntaRegex = /^([a-zA-Z_.?+-¨ ¨]){10,}$/;
-        validarRegex(pregunta,preguntaRegex,"La pregunta debe tener al menos 10 caracteres!");
+        if(!validarRegex(pregunta,preguntaRegex,"La pregunta debe tener al menos 10 caracteres!")) form.attr('action', '');
 	})
 
     function validarNulos(obj){
@@ -97,7 +100,9 @@
     function validarRegex(valor,expresion,mensaje){
 		if(!expresion.test(valor)){
 			alert(mensaje);
+            return false;
 		}
+        return true
     }
 
 </script>
