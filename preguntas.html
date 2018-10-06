@@ -25,36 +25,36 @@
     </header>
 	<nav class='main' id='n1' role='navigation'>
 		<span><a href='layout.html'>Inicio</a></spam>
-		<span><a href='quizes'>Insertar Pregunta</a></spam>
-		<span><a href='creditos'>Creditos</a></spam>
+		<span><a href='preguntas.html'>Insertar Pregunta</a></spam>
+		<span><a href='creditos.html'>Creditos</a></spam>
 	</nav>
 
     <section class="main" id="s1">
     <div>
-        <form id='fpreguntas' name='fpreguntas' action=’/prueba.php’>
+        <form id='fpreguntas' name='fpreguntas' action=’prueba.php’>
         	<p> Dirección de correo del autor de la pregunta <strong>(*)</strong></p>
-        	<input id="dirCorreo" type="text" autocomplete="off" placeholder="Ej: tom001@ikasle.ehu.eus"/>
+        	<input id="dirCorreo" type="text" name="nombreDirCorreo" autocomplete="off" placeholder="Ej: tom001@ikasle.ehu.eus"/>
 
         	<p> Enunciado de la pregunta <strong>(*)</strong></p>
-        	<input id="pregunta" type="text" autocomplete="off" placeholder="Ej: Elemento HTML"/>
+        	<input id="pregunta" type="text" name="nombrePregunta" autocomplete="off" placeholder="Ej: Elemento HTML"/>
 
         	<p>Respuesta correcta <strong>(*)</strong></p>
-        	<input id="respCorrecta" type="text" autocomplete="off" placeholder="Ej: <TABLE>"/>
+        	<input id="respCorrecta" type="text" name="nombreRespCorrecta" autocomplete="off" placeholder="Ej: <TABLE>"/>
 
             <p>Respuesta incorrecta 1 <strong>(*)</strong></p>
-        	<input id="respIncorrecta1" type="text" autocomplete="off" placeholder="Introducir una respuesta incorrecta"/>
+        	<input id="respIncorrecta1" type="text" name="nombreRespIncorrecta1" autocomplete="off" placeholder="Introducir una respuesta incorrecta"/>
 
             <p>Respuesta incorrecta 2 <strong>(*)</strong></p>
-        	<input id="respIncorrecta2" type="text" autocomplete="off" placeholder="Introducir una respuesta incorrecta"/>
+        	<input id="respIncorrecta2" type="text" name="nombreRespIncorrecta2" autocomplete="off" placeholder="Introducir una respuesta incorrecta"/>
 
             <p>Respuesta incorrecta 3 <strong>(*)</strong></p>
-        	<input id="respIncorrecta3" type="text" autocomplete="off" placeholder="Introducir una respuesta incorrecta"/>
+        	<input id="respIncorrecta3" type="text" name="nombreRespIncorrecta3" autocomplete="off" placeholder="Introducir una respuesta incorrecta"/>
 
             <p>Complejidad de la pregunta entre 0 y 5 <strong>(*)</strong></p>
-        	<input id="complejidad" type="text" autocomplete="off" placeholder="Ej: 5"/>
+        	<input id="complejidad" type="text" name="nombreComplejidad" autocomplete="off" placeholder="Ej: 5"/>
 
             <p>Tema de la pregunta <strong>(*)</strong></p>
-            <input id="tema" type="text" autocomplete="off" placeholder="Ej: HTML"/>
+            <input id="tema" type="text" name="nombreTema" autocomplete="off" placeholder="Ej: HTML"/>
 
             <button id="botonEnviar">Enviar pregunta</button>
         </form>
@@ -80,7 +80,7 @@
         validarRegex(complejidad,complejidadRegex,"La complejidad debe estar entre 0 y 5!");
         // valida pregunta
         var pregunta = $("#pregunta").val();
-        var preguntaRegex = /^([a-zA-Z_.?+-]){10,}$/;
+        var preguntaRegex = /^([a-zA-Z_.?+-¨ ¨]){10,}$/;
         validarRegex(pregunta,preguntaRegex,"La pregunta debe tener al menos 10 caracteres!");
 	})
 
