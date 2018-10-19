@@ -32,7 +32,7 @@
 		<table border=1> <tr> <th> Direccion </th> <th> Pregunta </th> <th> RespCorrecta </th>
 		<th> RespIncorrecta1 </th> <th> RespIncorrecta2 </th> <th> RespIncorrecta3 </th>
 		<th> Complejidad </th> <th> Tema </th>
-		</tr>';
+		</tr>
 
 <?php
 include "ParametrosDB0.php";
