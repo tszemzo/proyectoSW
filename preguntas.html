@@ -67,64 +67,64 @@
 
 <script>
 	$('#fpreguntas').submit(function(){
+        // valida campos nulos
         var form = $('#fpreguntas');
 		var mensaje = "";
 		if(validarNulos(form)) {
-			mensaje ="\nAlgun campo obligatorio vacio"; 
+			mensaje ="\nAlgun campo obligatorio vacio";
             alert(mensaje);
 			return false;
         }
+        // valida el correo con el formato correspondiente
         var correoRegex = /^([a-zA-Z_.+-])+[0-9]{3}\@ikasle.ehu.eus+$/;
         var correo = $("#dirCorreo");
-        if (!validarRegex(correo,correoRegex,"Correo en formato erroneo" + mensaje)){ 
+        if (!validarRegex(correo,correoRegex,"Correo en formato erroneo" + mensaje)){
 			return false;
 		}
 		else {
-		$('#dirCorreo').removeClass("error"); 
+		$('#dirCorreo').removeClass("error");
 		}
+        // valida la pregunta con el largo correspondiente
 		var pregunta = $("#pregunta");
         var preguntaRegex = /^([a-zA-Z_.?+-¨ ¨]){10,}$/;
         if(!validarRegex(pregunta,preguntaRegex,"La pregunta debe tener al menos 10 caracteres!" + mensaje)) {
 			return false;
 		}
 		else {
-		$('#pregunta').removeClass("error"); 
+		$('#pregunta').removeClass("error");
 		}
+        // valida la complejidad que debe estar en el intervalo [0-5]
         var complejidad = $("#complejidad");
         var complejidadRegex = /^[0-5]$/;
         if (!validarRegex(complejidad,complejidadRegex,"La complejidad debe estar entre 0 y 5!" + mensaje)){
 		errorCampo($('#complejidad'));
 		return false;
 		}
-        // valida pregunta
-        var pregunta = $("#pregunta");
-        var preguntaRegex = /^([a-zA-Z_.?+-¨ ¨]){10,}$/;
-        if(!validarRegex(pregunta,preguntaRegex,"La pregunta debe tener al menos 10 caracteres!")){
-			return false;
-
-			}
-		alert("paso");
+		alert("Pregunta enviada correctamente.");
 		return true;
 	});
-	
+
     function validarNulos(obj){
         //Función para comprobar los campos de texto
         algunoVacio = false;
         obj.find("input").each(function() {
             var $this = $(this);
-            if( $this.val().length <= 0 ) 
+            if( $this.val().length <= 0 )
 			{
 				algunoVacio = true;
 				errorCampo($this);
 			}
 			else{
-				($this).removeClass("error"); 
+				($this).removeClass("error");
 			}
         });
         return algunoVacio;
     }
 
     function validarRegex(unInput,expresion,mensaje){
+        // funcion que recibe un input, una expresion regular y un mensaje,
+        // y chequea que el input cumpla la expresion, en caso de que no sea
+        // asi, lanza el mensaje de error introducido.
 		if(!expresion.test(unInput.val())){
 			alert(mensaje);
 			errorCampo(unInput);

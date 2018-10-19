@@ -11,7 +11,7 @@
 		   media='only screen and (max-width: 480px)'
 		   href='estilos/smartphone.css' />
   </head>
-  
+
     <body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <div id='page-wrap' >
@@ -30,10 +30,10 @@
     <section class="main" id="s1">
     <div>
 		<table border=1> <tr> <th> Direccion </th> <th> Pregunta </th> <th> RespCorrecta </th>
-		<th> RespIncorrecta1 </th> <th> RespIncorrecta2 </th> <th> RespIncorrecta3 </th> 
+		<th> RespIncorrecta1 </th> <th> RespIncorrecta2 </th> <th> RespIncorrecta3 </th>
 		<th> Complejidad </th> <th> Tema </th>
 		</tr>';
-		
+
 <?php
 include "ParametrosDB0.php";
 $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
@@ -46,15 +46,10 @@ $preguntas = mysqli_query($mysqli, "SELECT * FROM preguntas;" );
 	echo '<tr><td>' . $row[0] . '</td> <td>' . $row[1] .
 	'</td> <td>' . $row[2] .'</td> <td>' . $row[3] .'</td>
 	<td>' . $row[4] .'</td> <td>' . $row[5] .'</td>
-	<td>' . $row[6] .'</td> <td>' . $row[7] .'</td> 
+	<td>' . $row[6] .'</td> <td>' . $row[7] .'</td>
 	</tr>';
 	}
-	echo '</table>
-		</div>
-		</section>
-		</body>';
-
+	echo '</table> </div> </section> </body>';
 $preguntas->close();
-
 mysqli_close($mysqli);
 ?>
